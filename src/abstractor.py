@@ -5,3 +5,9 @@ class AbstractProcessor(ABC):
     def processing(self):
         #Метод должен быть реализован в дочерних классах
         pass
+
+class AbstractCleaner(ABC):
+    @abstractmethod
+    def cleaning(self, data):
+        #Аналогично
+        pass
