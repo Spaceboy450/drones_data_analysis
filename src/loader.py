@@ -1,7 +1,8 @@
 import os
 import pandas as pd
+from abstractor import AbstractProcessor
 
-class BasicLoader:
+class BasicLoader(AbstractProcessor):
     def __init__(self, path):
         self.path = path
 
