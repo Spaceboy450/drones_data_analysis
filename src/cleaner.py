@@ -1,4 +1,4 @@
-from abstractor import AbstractCleaner
+from .abstractor import AbstractCleaner
 import pandas as pd
 
 class Cleaner(AbstractCleaner):
@@ -18,7 +18,6 @@ class Cleaner(AbstractCleaner):
 
         clean_data = clean_data.dropna(subset=[self.region, self.duration])
 
-        print(f"Data cleaned. Removed {len(data) - len(clean_data)} invalid records.")
         return clean_data
 
 # cleaner = Cleaner('source_city', 'duration', 'arrival_time')

@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from abstractor import AbstractProcessor
+from .abstractor import AbstractProcessor
 
 class BasicLoader(AbstractProcessor):
     def __init__(self, path):
