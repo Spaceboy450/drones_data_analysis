@@ -15,6 +15,9 @@ class Dashboarder():
             'text': '#2c3e50'
         }
 
+        self.font_family = '"Baloo Bhaijaan", "Arial Rounded MT Bold", "Comic Sans MS", "Inter", sans-serif'
+        self.font_size = 16
+
     def create_interactive_dashboard(self, data, x_col, y1_col, y2_col):
 
         fig = make_subplots(
@@ -60,18 +63,47 @@ class Dashboarder():
             title=dict(
                 text='📊 Дашборд анализа полетов по городам',
                 x=0.5,
-                font=dict(size=24, color=self.colors['text'])
+                font=dict(size=24,
+                          color=self.colors['text'],
+                          family=self.font_family,
+                          weight='bold')
             ),
             height=900,
             showlegend=False,
             plot_bgcolor=self.colors['background'],
             paper_bgcolor=self.colors['background'],
-            font=dict(family="Arial, sans-serif", size=12, color=self.colors['text'])
+            font=dict(family=self.font_family, size=self.font_size, color=self.colors['text'])
         )
 
-        fig.update_xaxes(title_text='Среднее время полета (мин)', row=1, col=1)
-        fig.update_yaxes(title_text='Город', row=1, col=1)
-        fig.update_xaxes(title_text='Город', row=1, col=2)
-        fig.update_yaxes(title_text='Количество полетов', row=1, col=2)
-        fig.update_xaxes(title_text='Город', row=2, col=1)
-        fig.update_yaxes(title_text='Время полета (мин)', row=2, col=1)
+        fig.update_xaxes(
+            title_text='Среднее время полета (мин)',
+            row=1, col=1,
+            title_font=dict(family=self.font_family, size=14)  # ← ДОБАВЬ ЭТО
+        )
+        fig.update_yaxes(
+            title_text='Город',
+            row=1, col=1,
+            title_font=dict(family=self.font_family, size=14)  # ← ДОБАВЬ ЭТО
+        )
+
+        fig.update_xaxes(
+            title_text='Город',
+            row=1, col=2,
+            title_font=dict(family=self.font_family, size=14)  # ← ДОБАВЬ ЭТО
+        )
+        fig.update_yaxes(
+            title_text='Количество полетов',
+            row=1, col=2,
+            title_font=dict(family=self.font_family, size=14)  # ← ДОБАВЬ ЭТО
+        )
+
+        fig.update_xaxes(
+            title_text='Город',
+            row=2, col=1,
+            title_font=dict(family=self.font_family, size=14)  # ← ДОБАВЬ ЭТО
+        )
+        fig.update_yaxes(
+            title_text='Время полета (мин)',
+            row=2, col=1,
+            title_font=dict(family=self.font_family, size=14)  # ← ДОБАВЬ ЭТО
+        )
