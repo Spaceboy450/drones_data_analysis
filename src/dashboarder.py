@@ -1,3 +1,4 @@
+import os
 from plotly.subplots import make_subplots
 from .visualizer import BaseVisualizer
 
@@ -107,3 +108,8 @@ class Dashboarder():
             row=2, col=1,
             title_font=dict(family=self.font_family, size=14)  # ← ДОБАВЬ ЭТО
         )
+
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        data_path = os.path.join(current_dir, '..', 'data', 'dashboard', 'plots.json')
+        data_path = os.path.normpath(data_path)
+        fig.write_json(data_path)

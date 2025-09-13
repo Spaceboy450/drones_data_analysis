@@ -29,10 +29,3 @@ class ExcelDataLoader(BasicLoader):
             df = pd.read_excel(full_path, sheet_name=sheet_name)
             excel_files.append(df)
         return pd.concat(excel_files, ignore_index=True)
-
-# current_dir = os.path.dirname(os.path.abspath(__file__))
-# data_path = os.path.join(current_dir, '..', 'data', 'raw_data')
-# data_path = os.path.normpath(data_path)
-#
-# loader = CsvLoader(data_path)
-# print(loader.processing())

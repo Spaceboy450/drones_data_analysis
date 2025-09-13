@@ -19,11 +19,3 @@ class Cleaner(AbstractCleaner):
         clean_data = clean_data.dropna(subset=[self.region, self.duration])
 
         return clean_data
-
-# cleaner = Cleaner('source_city', 'duration', 'arrival_time')
-#
-#
-# df = pd.read_csv('/Users/sheergambler/PycharmProjects/drones data/data/raw_data/airlines_flights_data.csv')
-#
-# print(cleaner.cleaning(df))
-
