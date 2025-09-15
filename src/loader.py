@@ -1,6 +1,29 @@
 import os
 import pandas as pd
 from .abstractor import AbstractProcessor
+from functools import wraps
+
+def log_processing(func):
+    @wraps(func)
+    def wrapper(self, *args, **kwargs):
+        print(f"Начало обработки в {self.__class__.__name__}")
+        result = func(self, *args, **kwargs)
+        print(f"Завершение обработки. Загружено {len(result)} строк")
+        return result
+    return wrapper
+
+def handle_file_errors(func):
+    @wraps(func)
+    def wrapper(self, *args, **kwargs):
+        try:
+            return func(self, *args, **kwargs)
+        except FileNotFoundError:
+            print(f"Ошибка: Файл не найден в директории {self.path}")
+            return pd.DataFrame()
+        except pd.errors.EmptyDataError:
+            print("Ошибка: Файл пуст")
+            return pd.DataFrame()
+    return wrapper
 
 class BasicLoader(AbstractProcessor):
     def __init__(self, path):
@@ -11,6 +34,8 @@ class BasicLoader(AbstractProcessor):
 
 
 class CsvLoader(BasicLoader):
+    @handle_file_errors
+    @log_processing
     def processing(self):
         csv_files = []
         for csv in self.get_data('.csv'):
@@ -22,6 +47,8 @@ class CsvLoader(BasicLoader):
 
 
 class ExcelDataLoader(BasicLoader):
+    @handle_file_errors
+    @log_processing
     def processing(self, sheet_name=0):
         excel_files = []
         for file in self.get_data(('.xls', '.xlsx')):

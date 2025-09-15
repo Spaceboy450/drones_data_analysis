@@ -1,11 +1,27 @@
 from .abstractor import AbstractCleaner
-import pandas as pd
+from functools import wraps
+# import pandas as pd
+
+def log_cleaning(func):
+    @wraps(func)
+    def wrapper(self, *args, **kwargs):
+        print(f"Начало очистки данных в {self.__class__.__name__}")
+        result = func(self, *args, **kwargs)
+        print(f"Завершение очистки")
+        return result
+
+    return wrapper
 
 class Cleaner(AbstractCleaner):
+    @log_cleaning
+
     def __init__(self, region, duration, date):
         self.region = region
         self.duration = duration
         self.date = date
+
+    # def __call__(self):
+    #     print('Начнем очистку датасета')
 
     def cleaning(self, data):
         clean_data = data.drop_duplicates().copy()

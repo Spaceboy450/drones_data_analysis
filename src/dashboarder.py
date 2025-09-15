@@ -79,34 +79,34 @@ class Dashboarder():
         fig.update_xaxes(
             title_text='Среднее время полета (мин)',
             row=1, col=1,
-            title_font=dict(family=self.font_family, size=14)  # ← ДОБАВЬ ЭТО
+            title_font=dict(family=self.font_family, size=14)
         )
         fig.update_yaxes(
             title_text='Город',
             row=1, col=1,
-            title_font=dict(family=self.font_family, size=14)  # ← ДОБАВЬ ЭТО
+            title_font=dict(family=self.font_family, size=14)
         )
 
         fig.update_xaxes(
             title_text='Город',
             row=1, col=2,
-            title_font=dict(family=self.font_family, size=14)  # ← ДОБАВЬ ЭТО
+            title_font=dict(family=self.font_family, size=14)
         )
         fig.update_yaxes(
             title_text='Количество полетов',
             row=1, col=2,
-            title_font=dict(family=self.font_family, size=14)  # ← ДОБАВЬ ЭТО
+            title_font=dict(family=self.font_family, size=14)
         )
 
         fig.update_xaxes(
             title_text='Город',
             row=2, col=1,
-            title_font=dict(family=self.font_family, size=14)  # ← ДОБАВЬ ЭТО
+            title_font=dict(family=self.font_family, size=14)
         )
         fig.update_yaxes(
             title_text='Время полета (мин)',
             row=2, col=1,
-            title_font=dict(family=self.font_family, size=14)  # ← ДОБАВЬ ЭТО
+            title_font=dict(family=self.font_family, size=14)
         )
 
         current_dir = os.path.dirname(os.path.abspath(__file__))
