@@ -2,12 +2,12 @@ import os
 from plotly.subplots import make_subplots
 from .visualizer import BaseVisualizer
 
-class Dashboarder():
+class Dashboarder:
     def __init__(self):
-        self.setup_plotly_theme()
+        self.__setup_plotly_theme()
         self.chart_creator = BaseVisualizer(self.colors)
 
-    def setup_plotly_theme(self):
+    def __setup_plotly_theme(self):
         self.colors = {
             'primary': '#1f77b4',
             'secondary': '#ff7f0e',
@@ -54,11 +54,11 @@ class Dashboarder():
             row=2, col=2
         )
 
-        self._apply_layout_settings(fig)
+        self.__apply_layout_settings(fig)
 
         return fig
 
-    def _apply_layout_settings(self, fig):
+    def __apply_layout_settings(self, fig):
 
         fig.update_layout(
             title=dict(

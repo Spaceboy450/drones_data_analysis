@@ -29,7 +29,7 @@ class BasicLoader(AbstractProcessor):
     def __init__(self, path):
         self.path = path
 
-    def get_data(self, extension):
+    def _get_data(self, extension):
         return [file for file in os.listdir(self.path) if file.endswith(extension)]
 
 
@@ -38,7 +38,7 @@ class CsvLoader(BasicLoader):
     @log_processing
     def processing(self):
         csv_files = []
-        for csv in self.get_data('.csv'):
+        for csv in self._get_data('.csv'):
             full_path = os.path.join(self.path, csv)
             data = pd.read_csv(full_path)
             csv_files.append(data)
@@ -51,7 +51,7 @@ class ExcelDataLoader(BasicLoader):
     @log_processing
     def processing(self, sheet_name=0):
         excel_files = []
-        for file in self.get_data(('.xls', '.xlsx')):
+        for file in self._get_data(('.xls', '.xlsx')):
             full_path = os.path.join(self.path, file)
             df = pd.read_excel(full_path, sheet_name=sheet_name)
             excel_files.append(df)

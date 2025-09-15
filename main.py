@@ -12,6 +12,7 @@ loader = CsvLoader(data_path)
 df = loader.processing()
 
 cleaner = Cleaner('source_city', 'duration', 'date')
+# cleaner()
 clean_data = cleaner.cleaning(df)
 
 aggregator = Aggregator('source_city', 'duration')
