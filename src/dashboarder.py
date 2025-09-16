@@ -19,6 +19,10 @@ class Dashboarder:
         self.font_family = '"Baloo Bhaijaan", "Arial Rounded MT Bold", "Comic Sans MS", "Inter", sans-serif'
         self.font_size = 16
 
+    @property
+    def getcolor(self):
+        return self.colors
+
     def create_interactive_dashboard(self, data, x_col, y1_col, y2_col):
 
         fig = make_subplots(
